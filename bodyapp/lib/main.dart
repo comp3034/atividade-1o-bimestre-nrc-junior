@@ -1,4 +1,6 @@
+import 'package:bodyapp/home/home.dart';
 import 'package:bodyapp/objetivos/objetivos.dart';
+import 'package:bodyapp/progressao/progressao.dart';
 import 'package:bodyapp/shared/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:pixel_perfect/pixel_perfect.dart';
@@ -37,7 +39,7 @@ class MyApp extends StatelessWidget {
         ),
       ),
       debugShowCheckedModeBanner: false,
-      home: MedidasScreen(),
+      home: HomeScreen(),
     );
   }
 }

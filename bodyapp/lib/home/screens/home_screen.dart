@@ -1,3 +1,4 @@
+import 'package:bodyapp/medidas/medidas.dart';
 import 'package:bodyapp/shared/colors.dart';
 import 'package:boxicons/boxicons.dart';
 import 'package:flutter/material.dart';
@@ -29,18 +30,21 @@ class HomeScreen extends StatelessWidget {
             Column(
               children: [
                 MenuItemWidget(
+                  screenName: MedidasScreen(),
                   icon: Boxicons.bx_ruler,
                   label: 'Medidas',
                   textStyle: menuStyle,
                   iconSize: MediaQuery.of(context).size.height * (24 / 568),
                 ),
                 MenuItemWidget(
+                  screenName: Container(),
                   icon: Boxicons.bx_target_lock,
                   label: 'Objetivos',
                   textStyle: menuStyle,
                   iconSize: MediaQuery.of(context).size.height * (24 / 568),
                 ),
                 MenuItemWidget(
+                  screenName: Container(),
                   icon: Boxicons.bx_line_chart,
                   label: 'Progressão',
                   textStyle: menuStyle,
@@ -54,12 +58,14 @@ class HomeScreen extends StatelessWidget {
               child: Column(
                 children: [
                   MenuItemWidget(
+                    screenName: Container(),
                     icon: Boxicons.bx_slider_alt,
                     label: 'Configurações',
                     textStyle: subMenuStyle,
                     iconSize: MediaQuery.of(context).size.height * (16 / 568),
                   ),
                   MenuItemWidget(
+                    screenName: Container(),
                     icon: Boxicons.bx_log_out,
                     label: 'Logout',
                     textStyle: subMenuStyle,
@@ -78,10 +84,12 @@ class HomeScreen extends StatelessWidget {
 class MenuItemWidget extends StatelessWidget {
   final IconData? icon;
   final String label;
+  final Widget screenName;
   final TextStyle? textStyle;
   final double? iconSize;
 
   MenuItemWidget({
+    required this.screenName,
     this.icon,
     this.label = 'Label',
     this.textStyle,
@@ -92,6 +100,14 @@ class MenuItemWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => screenName,
+          ),
+        );
+      },
       child: Padding(
         padding: EdgeInsets.only(
           left: MediaQuery.of(context).size.width * (43 / 320),
